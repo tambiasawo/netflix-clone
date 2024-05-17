@@ -12,6 +12,8 @@ import useAuth from '../hooks/useAuth'
 import Plans from '../components/Plans'
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
+import FooterColumn from '../components/FooterColumn'
+import SocialRow from '../components/SocialRow'
 interface Props {
   netflixOriginals: Movie[]
   sample: Movie[]
@@ -58,9 +60,9 @@ const Home = ({
       </Head>
       <Header />
 
-      <main className="relative pb-24 pl-5 lg:space-y-24 lg:pl-16">
+      <main className="relative pb-24 pl-5 space-y-8 md:space-y-16 lg:space-y-24 lg:pl-16">
         <Banner netflixOriginals={netflixOriginals} />
-        <section className="md:space-y-24">
+        <section className="md:space-y-20">
           <Row title="Trending Now" movies={trendingNow} />
           <Row title="Top Rated" movies={topRated} />
           <Row title="Action Thrillers" movies={actionMovies} />
@@ -71,11 +73,42 @@ const Home = ({
           <Row title="Romance Movies" movies={romanceMovies} />
           <Row title="Documentaries" movies={documentaries} />
         </section>
-        <div className="fixed bottom-0 left-0 right-0">
-          <Alert severity="warning" sx={{ textAlign: 'center' }}>
-            <AlertTitle>App is still under development</AlertTitle>
-          </Alert>
-        </div>
+
+        <footer className="mx-auto max-w-5xl space-y-4">
+          <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <FooterColumn
+              links={[
+                'Audio Description',
+                'Investor Realtions',
+                'Privacy',
+                'Contact Us',
+              ]}
+            />
+            <FooterColumn
+              links={['Help Center', 'Jobs', 'Legal Notices', 'Ad Choices']}
+            />
+            <FooterColumn
+              links={['Gift Cards', 'Netflix SHop', 'Preferences']}
+            />
+            <FooterColumn
+              links={['Media Center', 'Terms of Use', 'Corporate Information']}
+            />
+          </section>
+          <section className="flex items-center justify-between">
+            <div>
+              <button className="border p-1 text-sm text-[grey] hover:text-white">
+                Service Code
+              </button>
+            </div>
+            <div>
+              <SocialRow />
+            </div>
+          </section>
+
+          <p className="mx-auto text-center text-sm text-[grey]">
+            &copy; 1997-2024 Netflix, Inc.
+          </p>
+        </footer>
       </main>
       {showModal && <Modal />}
     </div>
@@ -104,10 +137,10 @@ export const getServerSideProps = async () => {
     fetch(requests.fetchRomanceMovies).then((res) => res.json()),
     fetch(requests.fetchDocumentaries).then((res) => res.json()),
   ])
-
+  console.log({ netflixOriginals })
   return {
     props: {
-      netflixOriginals: netflixOriginals.results,
+      netflixOriginals: netflixOriginals?.results,
       sample: sample,
       trendingNow: trendingNow.results,
       topRated: topRated.results,
