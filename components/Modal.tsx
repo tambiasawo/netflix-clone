@@ -11,6 +11,7 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt'
 import VolumeDownIcon from '@mui/icons-material/VolumeDown'
 import VolumeUpIcon from '@mui/icons-material/VolumeUp'
 import VolumeOffIcon from '@mui/icons-material/VolumeOff'
+import { Tooltip } from '@mui/material'
 
 export default function Modal() {
   const [showModal, setShowModal] = useRecoilState(modalState)
@@ -79,7 +80,9 @@ export default function Modal() {
                   fontSize="large"
                   className="h-7 w-7 text-black"
                 />
-                Play
+                <Tooltip title="Cant play due to copyright laws">
+                  <span> Play</span>
+                </Tooltip>
               </button>
               <button className="modalButton">
                 <AddIcon className="h-7 w-7" />
@@ -102,7 +105,7 @@ export default function Modal() {
           <div className="space-y-6 text-lg">
             <div className="flex items-center space-x-2 text-sm">
               <p className="font-semibold text-green-400 ">
-                {currentMovie?.vote_average * 10}% Match
+                {Math.floor(currentMovie?.vote_average * 10)}% Match
               </p>
               <p className="font-light">
                 {' '}

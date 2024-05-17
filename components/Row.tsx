@@ -29,7 +29,7 @@ function Row({ title, movies }: Props) {
   }
   return (
     <div className="h-40 sm:space-y-0.5 md:space-y-2">
-      <h2 className="pointer semi-bold w-56 cursor-pointer text-sm text-[#e5e5e5] hover:text-white md:text-2xl">
+      <h2 className=" semi-bold w-56 cursor-pointer text-sm text-[#e5e5e5] hover:text-white md:text-xl">
         {title}
       </h2>
       <div className="group relative md:-ml-2">

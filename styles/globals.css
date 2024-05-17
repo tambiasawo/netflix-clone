@@ -13,11 +13,16 @@
 }
 
 @layer components {
+  .headerBottom {
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 2px 5px rgba (0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
   .headerLink {
     @apply cursor-pointer text-sm font-light text-[#e5e5e5] hover:text-[#b3b3b3];
   }
   .bannerButton {
-    @apply flex items-center gap-x-1 space-x-2 rounded py-1 px-2  font-semibold transition hover:opacity-75;
+    @apply flex items-center space-x-2 justify-between rounded py-1 pr-4 pl-2 font-semibold transition hover:opacity-75;
   }
   .input {
     @apply w-full rounded bg-[#333] px-5 py-3.5 placeholder-[gray] outline-none focus:bg-[#454545];
