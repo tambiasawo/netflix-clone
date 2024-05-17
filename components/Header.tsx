@@ -22,7 +22,11 @@ const Header = () => {
 
   if (loading) return null
   return (
-    <header className={`${isScrolled ? 'bg-[#141414]' : ''}`}>
+    <header
+      className={`${
+        isScrolled ? 'bg-[#141414]' : 'headerBottom bg-black bg-opacity-10 '
+      } `}
+    >
       <div className="flex items-center space-x-2 md:space-x-10">
         <img
           src="https://rb.gy/ulxxee"
@@ -31,18 +35,24 @@ const Header = () => {
           className="cursor-pointer object-contain"
         />
         <ul className="hidden space-x-4 md:flex ">
-          <li className="headerLink">Home</li>
-          <li className="headerLink">TV Shows</li>
-          <li className="headerLink">Movies</li>
-          <li className="headerLink">New & Popular</li>
+          <li className="headerLink">
+            <Link href={'/'}> Home</Link>
+          </li>
+          {/*  <li className="headerLink">TV Shows</li>
+          <li className="headerLink">Movies</li> */}
+          <Tooltip title="Coming Soon...">
+            <li className="headerLink">New & Popular</li>
+          </Tooltip>
           <li className="headerLink">My List</li>
         </ul>
       </div>
       <div className="flex items-center space-x-4 font-light">
-        <SearchIcon className="hidden h-6 w-6 md:flex" />
-        <p className="hidden lg:flex">Kids</p>
+        <Tooltip title="Coming Soon...">
+          <SearchIcon className="hidden h-6 w-6 md:flex" />
+        </Tooltip>
+        {/*  <p className="hidden lg:flex">Kids</p>
         <NotificationsIcon />
-
+ */}
         <Link href="/account">
           <Tooltip title="Logout">
             <img
